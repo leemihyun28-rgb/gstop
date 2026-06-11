@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GS TOP Honors — 상위권의 다음 단계</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:   #0A0E1A;
+    --navy2:  #111627;
+    --navy3:  #1A2035;
+    --gold:   #C9A84C;
+    --gold2:  #E8C96A;
+    --white:  #F0F2F7;
+    --gray:   #8A93B2;
+    --gray2:  #4A5068;
+    --blue:   #3A6BFF;
+    --blue2:  #5585FF;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── UTILS ── */
+  .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+  .gold { color: var(--gold); }
+  .blue { color: var(--blue2); }
+  .serif { font-family: 'Noto Serif KR', serif; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 18px 32px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(10,14,26,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: var(--gold);
+    letter-spacing: 0.04em;
+  }
+  .nav-logo span {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+    font-size: 0.75rem;
+    color: var(--gray);
+    margin-left: 10px;
+    letter-spacing: 0.1em;
+  }
+  .nav-cta {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 7px 18px;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: all 0.2s;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--navy); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 120px 24px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  #hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 50% 40%, rgba(58,107,255,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.2s forwards;
+  }
+  .hero-question {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(2rem, 6vw, 3.4rem);
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 0;
+  }
+  .hero-question .honors-brand {
+    font-family: 'DM Serif Display', serif;
+    color: var(--gold2);
+    font-size: 1.05em;
+    display: block;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.5s forwards;
+  }
+  .hero-question .honors-sub {
+    display: block;
+    font-size: 0.52em;
+    font-weight: 400;
+    color: var(--gray);
+    letter-spacing: 0.12em;
+    margin-top: 10px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.9s forwards;
+  }
+  .hero-sub {
+    margin-top: 32px;
+    font-size: 1rem;
+    color: var(--gray);
+    font-weight: 300;
+    line-height: 1.9;
+    opacity: 0;
+    animation: fadeUp 0.7s 1.8s forwards;
+  }
+  .hero-meta {
+    margin-top: 40px;
+    display: flex; justify-content: center; gap: 36px;
+    opacity: 0;
+    animation: fadeUp 0.7s 2s forwards;
+  }
+  .hero-meta-item {
+    text-align: center;
+  }
+  .hero-meta-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    color: var(--gold);
+    display: block;
+  }
+  .hero-meta-label {
+    font-size: 0.72rem;
+    color: var(--gray);
+    letter-spacing: 0.1em;
+    margin-top: 2px;
+  }
+  .hero-divider {
+    width: 1px; background: var(--gray2);
+    align-self: stretch;
+  }
+  .hero-cta-row {
+    margin-top: 48px;
+    display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.7s 2.2s forwards;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 14px 32px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: background 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold2); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--white);
+    padding: 14px 32px;
+    border: 1px solid var(--gray2);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+  .btn-ghost:hover { border-color: var(--white); }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+
+  /* ── SECTION BASE ── */
+  section { padding: 96px 0; }
+  section + section { border-top: 1px solid rgba(255,255,255,0.06); }
+
+  .section-label {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .section-heading {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 20px;
+  }
+  .section-sub {
+    font-size: 0.95rem;
+    color: var(--gray);
+    line-height: 1.9;
+  }
+
+  /* ── POSITION ── */
+  #position .position-box {
+    margin-top: 52px;
+    border: 1px solid rgba(201,168,76,0.25);
+    padding: 40px;
+    position: relative;
+  }
+  #position .position-box::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 60px; height: 3px;
+    background: var(--gold);
+  }
+  .position-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .pos-line {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .pos-line-icon {
+    flex-shrink: 0;
+    width: 32px; height: 32px;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid var(--gray2);
+    font-size: 0.7rem;
+    color: var(--gray);
+    font-family: 'DM Serif Display', serif;
+    margin-top: 2px;
+  }
+  .pos-line-icon.active {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+  .pos-line-text {
+    font-size: 0.95rem;
+    color: var(--gray);
+    line-height: 1.7;
+  }
+  .pos-line-text strong {
+    font-weight: 700;
+    color: var(--white);
+  }
+  .pos-line-text.highlight {
+    color: var(--white);
+  }
+
+  /* ── IDENTITY ── */
+  #identity .identity-grid {
+    margin-top: 52px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: var(--gray2);
+    border: 1px solid var(--gray2);
+  }
+  .id-cell {
+    background: var(--navy2);
+    padding: 32px 24px;
+  }
+  .id-cell-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 10px;
+  }
+  .id-cell-text {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.6;
+  }
+  .id-cell-text .cross {
+    color: var(--gray2);
+    text-decoration: line-through;
+    font-weight: 300;
+  }
+  .id-cell-text .right {
+    color: var(--gold);
+  }
+
+  /* ── PROCESS ── */
+  #process .process-steps {
+    margin-top: 52px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .process-step {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: 0;
+    position: relative;
+  }
+  .process-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 35px; top: 52px; bottom: 0;
+    width: 1px;
+    background: rgba(201,168,76,0.2);
+  }
+  .step-num {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 4px;
+  }
+  .step-circle {
+    width: 36px; height: 36px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 0.85rem;
+    color: var(--gold);
+    flex-shrink: 0;
+    background: var(--navy);
+    position: relative; z-index: 1;
+  }
+  .step-body {
+    padding: 0 0 52px 24px;
+  }
+  .step-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .step-desc {
+    font-size: 0.9rem;
+    color: var(--gray);
+    line-height: 1.8;
+  }
+  .step-tag {
+    display: inline-block;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    padding: 3px 10px;
+    margin-right: 6px;
+    margin-top: 10px;
+  }
+
+  /* ── CURRICULUM ── */
+  #curriculum .curr-cards {
+    margin-top: 52px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .curr-card {
+    background: var(--navy2);
+    border: 1px solid var(--navy3);
+    padding: 32px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.25s;
+  }
+  .curr-card:hover { border-color: rgba(201,168,76,0.35); }
+  .curr-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+  .curr-card:hover::after { opacity: 1; }
+  .curr-abbr {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.8rem;
+    color: var(--gold);
+    margin-bottom: 6px;
+    letter-spacing: -0.02em;
+  }
+  .curr-name {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 16px;
+  }
+  .curr-desc {
+    font-size: 0.88rem;
+    color: var(--gray);
+    line-height: 1.8;
+  }
+  .curr-desc strong {
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  /* ── COMPETITION ── */
+  #competition {
+    background: var(--navy2);
+  }
+  #competition .comp-inner {
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 52px 48px;
+    text-align: center;
+  }
+  .comp-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .comp-sub {
+    font-size: 0.9rem;
+    color: var(--gray);
+    line-height: 1.9;
+    max-width: 500px;
+    margin: 0 auto 36px;
+  }
+  .comp-badges {
+    display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;
+    margin-bottom: 36px;
+  }
+  .comp-badge {
+    border: 1px solid var(--gray2);
+    padding: 9px 20px;
+    font-size: 0.82rem;
+    color: var(--gray);
+    letter-spacing: 0.06em;
+  }
+  .comp-badge.featured {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgba(201,168,76,0.06);
+  }
+  .comp-highlight {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.8;
+    padding: 24px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .comp-highlight span {
+    color: var(--gold);
+  }
+
+  /* ── NATIONAL EVENT ── */
+  #national {
+    position: relative;
+    overflow: hidden;
+  }
+  #national::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(201,168,76,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .national-inner {
+    border: 1px solid rgba(201,168,76,0.35);
+    padding: 60px 48px;
+    text-align: center;
+    position: relative;
+  }
+  .national-inner::before,
+  .national-inner::after {
+    content: '';
+    position: absolute;
+    width: 48px; height: 48px;
+    border-color: var(--gold);
+    border-style: solid;
+    opacity: 0.5;
+  }
+  .national-inner::before {
+    top: -1px; left: -1px;
+    border-width: 2px 0 0 2px;
+  }
+  .national-inner::after {
+    bottom: -1px; right: -1px;
+    border-width: 0 2px 2px 0;
+  }
+  .national-eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .national-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.6rem, 5vw, 2.6rem);
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .national-title-ko {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 28px;
+    letter-spacing: 0.08em;
+  }
+  .national-desc {
+    font-size: 0.92rem;
+    color: var(--gray);
+    line-height: 2;
+    max-width: 520px;
+    margin: 0 auto 36px;
+  }
+  .national-desc strong {
+    color: var(--white);
+    font-weight: 500;
+  }
+  .national-pills {
+    display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;
+  }
+  .npill {
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold);
+    font-size: 0.78rem;
+    padding: 7px 18px;
+    letter-spacing: 0.08em;
+  }
+
+  /* ── REPORT ── */
+  #report .report-grid {
+    margin-top: 52px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .report-item {
+    border-left: 2px solid var(--gold);
+    padding: 20px 24px;
+    background: var(--navy2);
+  }
+  .report-item-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+  .report-item-desc {
+    font-size: 0.82rem;
+    color: var(--gray);
+    line-height: 1.7;
+  }
+
+  /* ── FINAL STATEMENT ── */
+  #statement {
+    text-align: center;
+    padding: 112px 0;
+  }
+  .statement-text {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(1.3rem, 3.5vw, 1.9rem);
+    font-weight: 600;
+    line-height: 1.9;
+    color: var(--white);
+  }
+  .statement-text .highlight-line {
+    color: var(--gold);
+  }
+  .statement-cta {
+    margin-top: 52px;
+    display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+  }
+
+  /* ── STRIKEOUT ── */
+  #strikeout {
+    background: var(--navy2);
+  }
+  .strikeout-inner {
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 48px;
+  }
+  .strikeout-rule {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: var(--gray2);
+    margin: 36px 0 0;
+  }
+  .so-cell {
+    background: var(--navy);
+    padding: 28px 24px;
+    text-align: center;
+  }
+  .so-count {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.4rem;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .so-count.warn { color: #E8A040; }
+  .so-count.danger { color: #CC4444; }
+  .so-count.out { color: var(--gray2); }
+  .so-label {
+    font-size: 0.75rem;
+    color: var(--gray);
+    line-height: 1.5;
+  }
+  .so-note {
+    margin-top: 28px;
+    padding: 20px 24px;
+    border: 1px solid rgba(204,68,68,0.25);
+    background: rgba(204,68,68,0.04);
+    font-size: 0.88rem;
+    color: var(--gray);
+    line-height: 1.85;
+  }
+  .so-note strong { color: var(--white); font-weight: 500; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 36px 0;
+    text-align: center;
+  }
+  .footer-brand {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1rem;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .footer-meta {
+    font-size: 0.75rem;
+    color: var(--gray2);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .identity-grid { grid-template-columns: 1fr !important; }
+    .curr-cards { grid-template-columns: 1fr !important; }
+    .report-grid { grid-template-columns: 1fr !important; }
+    #position .position-box { padding: 28px 22px; }
+    #competition .comp-inner { padding: 36px 24px; }
+    .national-inner { padding: 44px 24px; }
+    nav { padding: 14px 18px; }
+    .nav-logo span { display: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    GS TOP Honors
+    <span>상위권의 다음 단계</span>
+  </div>
+  <a href="#apply" class="nav-cta">모집 안내 →</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div>
+    <p class="hero-eyebrow">GS TOP Honors — 2026 Selection</p>
+
+    <div class="hero-question">
+      <span class="honors-brand">GS TOP Honors</span>
+      <span class="honors-sub">상위권의 다음 단계</span>
+    </div>
+
+    <p class="hero-sub">
+      상위권 학생을 위한 선발형 심화 수학 프로그램<br>
+      연 2회 선발 · 정원 8명 · 초등 5학년 ~ 중등</p>
+    <p class="hero-sub" style="margin-top:10px; font-size:0.82rem; color:var(--gray);">
+      2026년 9월 개강 · 대치 · 목동 · 분당 · 서초
+    </p>
+
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-num">8</span>
+        <span class="hero-meta-label">정원 (명)</span>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-num">2</span>
+        <span class="hero-meta-label">연간 선발 횟수</span>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-num">3단계</span>
+        <span class="hero-meta-label">선발 절차</span>
+      </div>
+    </div>
+
+    <div class="hero-cta-row">
+      <a href="#apply" class="btn-primary">선발고사 일정 확인</a>
+      <a href="#curriculum" class="btn-ghost">프로그램 보기</a>
+    </div>
+  </div>
+</section>
+
+<!-- POSITIONING -->
+<section id="position">
+  <div class="container reveal">
+    <p class="section-label">Positioning</p>
+    <h2 class="section-heading">
+      정답을 맞히는 학생은<br>많습니다.
+    </h2>
+    <p class="section-sub">
+      하지만 자신의 풀이를 설명하고, 논리를 전달하며,<br>
+      고난도 문제를 끝까지 해결하는 학생은 많지 않습니다.
+    </p>
+
+    <div class="position-box">
+      <div class="position-lines">
+        <div class="pos-line">
+          <div class="pos-line-icon">A</div>
+          <div class="pos-line-text">
+            <strong>빠르게 가는 학생</strong>보다 <strong>깊이 있게 이해하는 학생</strong>
+          </div>
+        </div>
+        <div class="pos-line">
+          <div class="pos-line-icon">B</div>
+          <div class="pos-line-text">
+            <strong>많이 푸는 학생</strong>보다 <strong>설명할 수 있는 학생</strong>
+          </div>
+        </div>
+        <div class="pos-line">
+          <div class="pos-line-icon active">H</div>
+          <div class="pos-line-text highlight">
+            <strong>정답을 맞히는 학생</strong>에서 <strong class="gold">논리를 전달할 수 있는 학생</strong>으로.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IDENTITY -->
+<section id="identity">
+  <div class="container reveal">
+    <p class="section-label">What Makes Honors Different</p>
+    <h2 class="section-heading">GS TOP Honors는<br>다른 방식으로 성장시킵니다.</h2>
+    <p class="section-sub">
+      단순 진도 이수 대신, 이해의 완성을 확인합니다.
+    </p>
+
+    <div class="identity-grid">
+      <div class="id-cell">
+        <p class="id-cell-label">수업 방식</p>
+        <p class="id-cell-text">
+          <span class="cross">문제만 풀기</span><br>
+          <span class="right">↓ 풀이를 설명</span>
+        </p>
+      </div>
+      <div class="id-cell">
+        <p class="id-cell-label">완성 기준</p>
+        <p class="id-cell-text">
+          <span class="cross">진도 통과</span><br>
+          <span class="right">↓ LC 최종 인증</span>
+        </p>
+      </div>
+      <div class="id-cell">
+        <p class="id-cell-label">피드백</p>
+        <p class="id-cell-text">
+          <span class="cross">점수만 제공</span><br>
+          <span class="right">↓ 개별 서술 첨삭</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="apply">
+  <div class="container reveal">
+    <p class="section-label">Selection Process</p>
+    <h2 class="section-heading">입학 절차</h2>
+    <p class="section-sub">
+      3월 / 9월, 연 2회 선발합니다.<br>
+      다음 모집: <strong style="color:var(--white)">2026년 9월</strong> · 대치 · 목동 · 분당 · 서초
+    </p>
+
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">
+          <div class="step-circle">1</div>
+        </div>
+        <div class="step-body">
+          <p class="step-title">Selection Test — 선발고사</p>
+          <p class="step-desc">
+            단원별 성취도와 경시형 문항을 포함한 선발 평가를 진행합니다.<br>
+            단순 연산이 아닌 사고 과정을 측정합니다.
+          </p>
+          <span class="step-tag">필기 + 서술형</span>
+          <span class="step-tag">60분</span>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="step-num">
+          <div class="step-circle">2</div>
+        </div>
+        <div class="step-body">
+          <p class="step-title">학습 분석 리포트 제공</p>
+          <p class="step-desc">
+            응시 결과를 바탕으로 단원별 성취도, 경시형 문항 분석,
+            취약 영역 분석 리포트를 제공합니다.<br>
+            선발 여부와 무관하게 모든 응시 학생에게 제공됩니다.
+          </p>
+          <span class="step-tag">개인 리포트</span>
+          <span class="step-tag">학부모 공유</span>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="step-num">
+          <div class="step-circle">3</div>
+        </div>
+        <div class="step-body">
+          <p class="step-title">최종 선발 — 정원 8명</p>
+          <p class="step-desc">
+            분석 결과를 기반으로 최종 선발합니다.<br>
+            정원은 8명으로 제한됩니다.
+          </p>
+          <span class="step-tag">3월 / 9월</span>
+          <span class="step-tag">정원 8명</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CURRICULUM -->
+<section id="curriculum">
+  <div class="container reveal">
+    <p class="section-label">Program Curriculum</p>
+    <h2 class="section-heading">수업 구성</h2>
+    <p class="section-sub">
+      네 가지 요소가 유기적으로 연결되어<br>
+      한 명의 학생을 완성합니다.
+    </p>
+
+    <div class="curr-cards">
+      <div class="curr-card">
+        <p class="curr-abbr">MW</p>
+        <p class="curr-name">Mathematical Writing</p>
+        <p class="curr-desc">
+          채점 기준표 기반 서술 훈련.<br>
+          <strong>감점 요소 분석 · 부분점수 전략 · 논리 전개</strong>까지,
+          고난도 문제를 "설명할 수 있는" 실력으로 만드는 과정.
+        </p>
+      </div>
+
+      <div class="curr-card">
+        <p class="curr-abbr">FB</p>
+        <p class="curr-name">개별 서술 첨삭</p>
+        <p class="curr-desc">
+          학생이 쓴 풀이를 개별적으로 분석하고 피드백합니다.<br>
+          <strong>논리의 빈틈, 표현의 불완전함</strong>을 수업 전에 확인합니다.
+        </p>
+      </div>
+
+      <div class="curr-card">
+        <p class="curr-abbr">CP</p>
+        <p class="curr-name">Challenge Problem</p>
+        <p class="curr-desc">
+          성대경시 · KJMO 수준의 경시형 문항 기반 심화 수업.<br>
+          <strong>학교 시험을 넘어</strong> 수학적 사고의 깊이를 확장합니다.
+        </p>
+      </div>
+
+      <div class="curr-card">
+        <p class="curr-abbr">LC</p>
+        <p class="curr-name">Level Complete</p>
+        <p class="curr-desc">
+          단원 종료 후 취약 영역 보완 → 재도전 → 재검증 → <strong>최종 인증.</strong><br>
+          배운 내용을 완성하기 전에는 다음 단계로 가지 않습니다.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPETITION -->
+<section id="competition">
+  <div class="container reveal">
+    <p class="section-label">Competition Track</p>
+    <div class="comp-inner">
+      <h2 class="comp-title">경시 수학, GS TOP Honors에서 준비합니다.</h2>
+      <p class="comp-sub">
+        단순 심화를 넘어, 국내 주요 경시 대회 수준의 문항을
+        수업에서 직접 경험합니다.
+      </p>
+      <div class="comp-badges">
+        <span class="comp-badge featured">성대경시</span>
+        <span class="comp-badge featured">KJMO 한국수학올림피아드</span>
+      </div>
+      <p class="comp-highlight">
+        경시를 목표로 하지 않아도,<br>
+        <span>경시형 사고력</span>은 상위권의 기본 역량입니다.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- STRIKEOUT -->
+<section id="strikeout">
+  <div class="container reveal">
+    <p class="section-label">Membership Standards</p>
+    <div class="strikeout-inner">
+      <h2 class="section-heading" style="margin-bottom:8px;">삼진 아웃제</h2>
+      <p class="section-sub">
+        GS TOP Honors는 선발 이후에도 기준을 유지합니다.<br>
+        학기 중 성취도가 기준 미만으로 반복될 경우, 반 이동을 원칙으로 합니다.
+      </p>
+
+      <div class="strikeout-rule">
+        <div class="so-cell">
+          <p class="so-count warn">1</p>
+          <p class="so-label">1회 미달<br>구두 안내</p>
+        </div>
+        <div class="so-cell">
+          <p class="so-count warn" style="color:#D07030;">2</p>
+          <p class="so-label">2회 미달<br>학부모 상담</p>
+        </div>
+        <div class="so-cell">
+          <p class="so-count out">3</p>
+          <p class="so-label">3회 미달<br>반 이동</p>
+        </div>
+      </div>
+
+      <div class="so-note">
+        <strong>적용 기준</strong> — 한 학기 동안 성취도 평가 점수가 기준 미만에 해당하는 횟수를 누적합니다.<br>
+        반 이동은 퇴출이 아니라 <strong>적합한 레벨로의 재배치</strong>입니다. Honors 기준을 유지함으로써 반 전체의 수업 밀도를 보장합니다.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NATIONAL EVENT -->
+<section id="national">
+  <div class="container reveal">
+    <p class="section-label">National Event</p>
+    <div class="national-inner">
+      <p class="national-eyebrow">Coming 2026</p>
+      <h2 class="national-title">GS TOP Honors</h2>
+      <p class="national-title-ko">전국 발표대회</p>
+      <p class="national-desc">
+        수학 문제를 푸는 것에서 한 걸음 더.<br>
+        Honors 수강생들이 <strong>자신의 풀이를 무대 위에서 직접 설명</strong>합니다.<br>
+        단 하나의 정답보다, 하나의 논리를 완성하는 경험.<br>
+        전국 GS TOP Honors 센터 학생들이 함께합니다.
+      </p>
+      <div class="national-pills">
+        <span class="npill">전국 대회</span>
+        <span class="npill">구술 발표 형식</span>
+        <span class="npill">Honors 수강생 한정</span>
+        <span class="npill">2026년 9월 예정</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REPORT -->
+<section id="report">
+  <div class="container reveal">
+    <p class="section-label">Parent Report</p>
+    <h2 class="section-heading">학부모 리포트</h2>
+    <p class="section-sub">
+      정기적으로 자녀의 학습 상태를 정확하게 확인할 수 있습니다.
+    </p>
+
+    <div class="report-grid">
+      <div class="report-item">
+        <p class="report-item-title">강점 영역</p>
+        <p class="report-item-desc">어떤 유형에서 완성도 높은 풀이를 보이는지 확인합니다.</p>
+      </div>
+      <div class="report-item">
+        <p class="report-item-title">취약 영역</p>
+        <p class="report-item-desc">반복적으로 틀리거나 설명이 불완전한 단원을 짚어줍니다.</p>
+      </div>
+      <div class="report-item">
+        <p class="report-item-title">누적 데이터 분석</p>
+        <p class="report-item-desc">LC를 포함한 학습 이력 전반을 누적 데이터로 분석해 제공합니다.</p>
+      </div>
+      <div class="report-item">
+        <p class="report-item-title">성장 추이</p>
+        <p class="report-item-desc">학습 완성도의 변화를 기간별로 추적합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL STATEMENT -->
+<section id="statement">
+  <div class="container reveal">
+    <p class="statement-text">
+      "우리 아이 <span class="highlight-line">아너야</span>."
+    </p>
+    <div class="statement-cta">
+      <a href="#apply" class="btn-primary">선발고사 일정 확인</a>
+      <a href="#curriculum" class="btn-ghost">프로그램 상세 보기</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p class="footer-brand">GS TOP Honors</p>
+    <p class="footer-meta">상위권의 다음 단계 · 연 2회 선발 · 정원 8명</p>
+  </div>
+</footer>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(r => observer.observe(r));
+  });
+</script>
+</body>
+</html>
